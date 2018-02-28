@@ -3,7 +3,7 @@ import { ShoppingCartComponent } from './restaurants/restaurant-detail/shopping-
 import { MenuComponent } from './restaurants/restaurant-detail/menu/menu.component';
 import { RestaurantService } from './restaurants/restaurant.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -37,7 +37,7 @@ import { ReviewComponent } from './restaurants/restaurant-detail/review/review.c
     HttpModule,
     RouterModule.forRoot(ROUTES),
   ],
-  providers: [RestaurantService, ShoppingCartService],
+  providers: [RestaurantService, ShoppingCartService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
