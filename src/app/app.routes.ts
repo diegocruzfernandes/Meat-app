@@ -1,3 +1,4 @@
+import { OrderComponent } from './order/order.component';
 import { MenuComponent } from './restaurants/restaurant-detail/menu/menu.component';
 import { RestaurantDetailComponent } from './restaurants/restaurant-detail/restaurant-detail.component';
 import { Routes } from '@angular/router';
@@ -15,10 +16,11 @@ export const ROUTES: Routes = [
     {
         path: 'restaurants/:id', component: RestaurantDetailComponent,
         children: [
-            {path: '', redirectTo: 'menu', pathMatch:'full'},
-            {path: 'menu', component: MenuComponent},
-            {path: 'reviews', component: ReviewComponent}
+            { path: '', redirectTo: 'menu', pathMatch: 'full' },
+            { path: 'menu', component: MenuComponent },
+            { path: 'reviews', component: ReviewComponent }
         ]
     },
+    { path: 'order', component: OrderComponent },
     { path: 'about', component: AboutComponent },
 ]
