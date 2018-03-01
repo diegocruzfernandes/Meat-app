@@ -1,54 +1,41 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th class="text-center">Quantidade</th>
-      <th>Item</th>
-      <th>Descrição</th>
-      <th class="text-right">Subtotal</th>
-      <th class="text-right"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="text-center">
-        <a class="btn btn-sm">
-          <i class="fa fa-minus"></i>
-        </a>
-        1
-        <a class="btn btn-sm">
-          <i class="fa fa-plus"></i>
-        </a>
-      </td>
-      <td>Cup Cake</td>
+<div class="col-xs-12" *ngIf="!items" >
+  <p>Não há itens no seu carrinho. Que tal comelar por <a [routerLink]="['/restaurants']">aqui</a>?   </p>
+</div>
 
-      <td>Recheado com doce de leite</td>
-      <td class="text-right">R$ 10,00</td>
-      <td class="text-right">
-        <a class="btn btn-sm danger">
-          <i class="fa fa-remove"></i>
-        </a>
-      </td>
-    </tr>
-    <tr>
-      <td class="text-center">
-        <a class="btn btn-sm">
-          <i class="fa fa-minus"></i>
-        </a>
-        1
-        <a class="btn btn-sm">
-          <i class="fa fa-plus"></i>
-        </a>
-      </td>
-      <td>Croissant</td>
+<div class="col-xs-12 table-responsive" *ngIf="items">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Quantidade</th>
+        <th>Item</th>
+        <th>Descrição</th>
+        <th class="text-right">Subtotal</th>
+        <th class="text-right"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of Items">
+        <td class="text-center">
+          <a (click)="emitDecreaseQty(item)" class="btn btn-sm">
+            <i class="fa fa-minus"></i>
+          </a>
+          {{item.quantity}}
+          <a (click)="emitIncreaseQty(item)" class="btn btn-sm">
+            <i class="fa fa-plus"></i>
+          </a>
+        </td>
+        <td>{{item.menuItem.name}}</td>
 
-      <td>Recheado com presunto e queijo</td>
-      <td class="text-right">R$ 10,00</td>
-      <td class="text-right">
-        <a class="btn btn-sm danger ">
-          <i class="fa fa-remove"></i>
-        </a>
-      </td>
-    </tr>
+        <td>{{item.menuItem.description}}</td>
+        <td class="text-right">{{item.value() | currency: 'BRL': true}}</td>
+        <td class="text-right">
+          <a (click)="emitRemove(item)" class="btn btn-sm danger">
+            <i class="fa fa-remove"></i>
+          </a>
+        </td>
+      </tr>
 
-  </tbody>
-</table>
+
+    </tbody>
+  </table>
+</div>

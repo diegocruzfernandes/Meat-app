@@ -19,4 +19,16 @@ export class OrderItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  emitIncreaseQty(item: CartItem){
+    this.increaseQty.emit(item);
+  }
+
+  emitDecreaseQty(item: CartItem){
+    this.decreaseQty.emit(item);
+  }
+
+  emitRemove(item: CartItem){
+    this.remove.emit(item);
+  }
+
 }
