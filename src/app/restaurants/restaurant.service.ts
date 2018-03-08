@@ -17,8 +17,8 @@ export class RestaurantService{
       
     constructor(private http: Http){}
 
-    restaurant(): Observable<Restaurant[]> {
-        return this.http.get(this.url)
+    restaurant(search?:string ): Observable<Restaurant[]> {
+        return this.http.get(this.url, {params: {q: search}})
         .map(response => response.json())
         .catch(ErrorHandler.handleError)
         

@@ -41,9 +41,4 @@ export class SnackbarComponent implements OnInit {
     }).switchMap(message => Observable.timer(3000))
     .subscribe(timer => this.snackVisibility = 'hidden');
   }
-
-  toggleSnack() {
-    this.snackVisibility = this.snackVisibility === 'hidden' ? 'visible' : 'hidden';
-    console.log("clique");
-  }
 }
